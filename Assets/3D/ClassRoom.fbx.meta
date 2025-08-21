@@ -3,7 +3,117 @@ guid: 750462c2a45252041825fa36477cd813
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #167
+    second: {fileID: 2100000, guid: 6b694f190fe8aa142a66274abe2961d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #212
+    second: {fileID: 2100000, guid: e81780bb56ad869449e56e5f8661a450, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #279
+    second: {fileID: 2100000, guid: 87def9405ec81e948b30df979c8a4cc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #280
+    second: {fileID: 2100000, guid: d3e27e9eb7c849c4db6e6407caab7652, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #30
+    second: {fileID: 2100000, guid: 97d0986542944f74d9682b5b015ebe07, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #31
+    second: {fileID: 2100000, guid: 29a20ce1e155eba43800eccacfff98a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #314
+    second: {fileID: 2100000, guid: 07d2b359c43b0d94c96df65a9cc54801, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #315
+    second: {fileID: 2100000, guid: 1a76ca31a577a1f44ba437827264a726, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #316
+    second: {fileID: 2100000, guid: 22d062650bfa8e54d9b0a92dc173edd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #350
+    second: {fileID: 2100000, guid: 5f50aaea6b9381c46a7268b9ebc1260f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #385
+    second: {fileID: 2100000, guid: 7f30ed861fab8e94ab0b64165e516241, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #386
+    second: {fileID: 2100000, guid: 79befbb1d69e0eb4d8dacef5faf792bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #409
+    second: {fileID: 2100000, guid: f295a0cc7d8613b4cbdb57b7a5316c6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #444
+    second: {fileID: 2100000, guid: 672c0616191b98b4d880b07819f758e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #495
+    second: {fileID: 2100000, guid: 99ba312d68f9b394996aa03f8bb0d1ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #584
+    second: {fileID: 2100000, guid: 8efce7f0fe7bed14e9cb51456a6971f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #585
+    second: {fileID: 2100000, guid: 3397bd701011310439f7fa588d606187, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #99
+    second: {fileID: 2100000, guid: 60db479eac69b134499c95cff84fddaa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tape color
+    second: {fileID: 2100000, guid: b8df863f050b42c4689da71be8c9a01d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: thumbtack body.001
+    second: {fileID: 2100000, guid: 0cc1584c374dfe24fa8ea55b511d1f6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: thumbtack needle
+    second: {fileID: 2100000, guid: 967489fc01377b64cb54180971965dab, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: chalkboard
+    second: {fileID: 2800000, guid: 98f1b46550c87704b856a7f635567677, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
