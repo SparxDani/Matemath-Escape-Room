@@ -97,6 +97,71 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: bin
+    second: {fileID: 2100000, guid: ec6c5c4611f66d348942ebb3d0a9a5c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black
+    second: {fileID: 2100000, guid: 0ffefe7f5d7c53b47bac63274b54628a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black1
+    second: {fileID: 2100000, guid: 5230d4232c7e8684bb0895eb427c40e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue
+    second: {fileID: 2100000, guid: fb63abaaa03a3d244b2a8881e77843bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brass
+    second: {fileID: 2100000, guid: 2da0f02804dee0e4a82564190e2ac8e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clock hands
+    second: {fileID: 2100000, guid: 34700a254cdba3c4d989514e9b85c7cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clock inside
+    second: {fileID: 2100000, guid: d1e5e4a0b403e334d97f704f5d44479e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clock wood
+    second: {fileID: 2100000, guid: aa6db8743408e394785b5ec476e2fd2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: covers1
+    second: {fileID: 2100000, guid: 40536d6f29fe18b4aa3cc11a684192b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: covers2
+    second: {fileID: 2100000, guid: 70bf1e5fd45f50b4db300244204fe3a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert39
+    second: {fileID: 2100000, guid: f96df4a0d6254c74db362e9ddf6b7561, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paper1
+    second: {fileID: 2100000, guid: 6ca66e6236633014bb3aa6f28ca8a615, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pillows
+    second: {fileID: 2100000, guid: 9659f4acf6c45094c82f03cb8e96f2a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: tape color
     second: {fileID: 2100000, guid: b8df863f050b42c4689da71be8c9a01d, type: 2}
   - first:
@@ -110,10 +175,20 @@ ModelImporter:
       name: thumbtack needle
     second: {fileID: 2100000, guid: 967489fc01377b64cb54180971965dab, type: 2}
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2100000, guid: ceac88e3c11f8c549baea739326c6814, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow_bin
+    second: {fileID: 2100000, guid: 27b28b9eae81e23409f9c41c3f02ba55, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: chalkboard
-    second: {fileID: 2800000, guid: 98f1b46550c87704b856a7f635567677, type: 3}
+    second: {fileID: 2800000, guid: 5c95d8afce1eaf14a8f66b8b177cb810, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
