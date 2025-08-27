@@ -25,9 +25,9 @@ MonoBehaviour:
     _FadeAffectsOnlyContours: 0
     _FadeStart: 40
     _FadeEnd: 60
-    _BlackOffset: 0
+    _BlackOffset: 0.5
     _ContoursIntensity: 1
-    _ContoursThickness: 1.5
+    _ContoursThickness: 1.01
     _ContoursElevationStrength: 3
     _ContoursElevationSmoothness: 0.9
     _ContoursDepressionStrength: 3
@@ -53,13 +53,13 @@ MonoBehaviour:
     AOMethod: 1
     Downsample: 0
     AfterOpaque: 0
-    Source: 1
+    Source: 0
     NormalSamples: 1
-    Intensity: 4
+    Intensity: 10
     DirectLightingStrength: 1
-    Radius: 1
-    Samples: 1
-    BlurQuality: 0
+    Radius: 1.5
+    Samples: 2
+    BlurQuality: 2
     Falloff: 100
     SampleCount: -1
   m_BlueNoise256Textures:
