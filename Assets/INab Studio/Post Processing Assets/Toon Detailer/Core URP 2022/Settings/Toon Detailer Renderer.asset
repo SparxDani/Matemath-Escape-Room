@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   m_Settings:
-    _DetailerType: 0
+    _DetailerType: 1
     _MaskUse: 0
     _MaskLayer:
       serializedVersion: 2
@@ -25,17 +25,17 @@ MonoBehaviour:
     _FadeAffectsOnlyContours: 0
     _FadeStart: 40
     _FadeEnd: 60
-    _BlackOffset: 0.5
+    _BlackOffset: 0
     _ContoursIntensity: 1
-    _ContoursThickness: 1.01
-    _ContoursElevationStrength: 3
+    _ContoursThickness: 1.44
+    _ContoursElevationStrength: 0
     _ContoursElevationSmoothness: 0.9
     _ContoursDepressionStrength: 3
     _ContoursDepressionSmoothness: 0.9
-    _CavityIntensity: 1
-    _CavityRadius: 1
-    _CavityStrength: 5
-    _CavitySamples: 16
+    _CavityIntensity: 0
+    _CavityRadius: 0
+    _CavityStrength: 0
+    _CavitySamples: 1
 --- !u!114 &-1259508154145030724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,14 +52,14 @@ MonoBehaviour:
   m_Settings:
     AOMethod: 1
     Downsample: 0
-    AfterOpaque: 0
+    AfterOpaque: 1
     Source: 0
     NormalSamples: 1
-    Intensity: 10
+    Intensity: 4
     DirectLightingStrength: 1
-    Radius: 1.5
-    Samples: 2
-    BlurQuality: 2
+    Radius: 3
+    Samples: 0
+    BlurQuality: 0
     Falloff: 100
     SampleCount: -1
   m_BlueNoise256Textures:
