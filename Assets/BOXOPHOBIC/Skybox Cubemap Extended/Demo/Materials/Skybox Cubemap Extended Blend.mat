@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ENABLEFOG_ON
   - _ENABLEROTATION_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 0
@@ -69,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Tex:
-        m_Texture: {fileID: 8900000, guid: 6e998e53d0a82bb45928cd08a0fcfff3, type: 3}
+        m_Texture: {fileID: 8900000, guid: 32b85539e674b7c4b9aa3f12dfcdca80, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Tex_Blend:
@@ -95,7 +96,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EnableFog: 0
+    - _EnableFog: 1
     - _EnableRotation: 1
     - _Exposure: 1
     - _Float0: -0.21
@@ -116,7 +117,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Rotation: 214
-    - _RotationSpeed: 0
+    - _RotationSpeed: 4
     - _Rotationn: 1
     - _SkyboxExtended: 1
     - _SmoothnessTextureChannel: 0
@@ -129,5 +130,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Tex_HDR: {r: 1, g: 1, b: 0, a: 0}
-    - _TintColor: {r: 0.7132075, g: 0.7132075, b: 0.7132075, a: 1}
+    - _TintColor: {r: 0.6981132, g: 0.20943388, b: 0.36053833, a: 1}
   m_BuildTextureStacks: []
