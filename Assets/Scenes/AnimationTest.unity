@@ -512,6 +512,7 @@ MonoBehaviour:
   m_LockStageInInspector: 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_ValidatingStreamVersion: 20170927
   m_OnValidateCalled: 1
   m_StreamingVersion: 20170927
@@ -541,6 +542,11 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
 >>>>>>> Stashed changes
+=======
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+>>>>>>> Stashed changes
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -556,8 +562,11 @@ MonoBehaviour:
     m_SensorSize: {x: 1, y: 1}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_OrthoFromCamera: 0
     m_PhysicalFromCamera: 0
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -570,12 +579,17 @@ MonoBehaviour:
         m_Calls: []
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       m_CallsDirty: 1
   m_LegacyBlendHint: 0
   m_ComponentPipeline: []
   m_ComponentOwner: {fileID: 269589151}
   mCachedLookAtTarget: {fileID: 0}
   mCachedLookAtTargetVcam: {fileID: 0}
+=======
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 269589151}
+>>>>>>> Stashed changes
 =======
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 269589151}
@@ -23005,6 +23019,10 @@ MonoBehaviour:
     m_CustomCurve:
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+      serializedVersion: 2
+>>>>>>> Stashed changes
 =======
       serializedVersion: 2
 >>>>>>> Stashed changes
@@ -23016,6 +23034,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   m_CustomBlends: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
   m_OutputCamera: {fileID: 0}
@@ -23034,6 +23053,8 @@ MonoBehaviour:
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -23041,6 +23062,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -31501,6 +31525,7 @@ MonoBehaviour:
   m_LockStageInInspector: 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_ValidatingStreamVersion: 20170927
   m_OnValidateCalled: 1
   m_StreamingVersion: 20170927
@@ -31530,6 +31555,11 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
 >>>>>>> Stashed changes
+=======
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+>>>>>>> Stashed changes
   m_LookAt: {fileID: 1611181771}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -31545,8 +31575,11 @@ MonoBehaviour:
     m_SensorSize: {x: 1, y: 1}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_OrthoFromCamera: 0
     m_PhysicalFromCamera: 0
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -31559,12 +31592,17 @@ MonoBehaviour:
         m_Calls: []
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       m_CallsDirty: 1
   m_LegacyBlendHint: 0
   m_ComponentPipeline: []
   m_ComponentOwner: {fileID: 828943209}
   mCachedLookAtTarget: {fileID: 0}
   mCachedLookAtTargetVcam: {fileID: 0}
+=======
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 828943209}
+>>>>>>> Stashed changes
 =======
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 828943209}
@@ -32961,7 +32999,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_vcamOwner: {fileID: 0}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -38201,7 +38242,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_vcamOwner: {fileID: 0}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -56222,6 +56266,7 @@ MonoBehaviour:
   m_LockStageInInspector: 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_ValidatingStreamVersion: 20170927
   m_OnValidateCalled: 1
   m_StreamingVersion: 20170927
@@ -56251,6 +56296,11 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
 >>>>>>> Stashed changes
+=======
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+>>>>>>> Stashed changes
   m_LookAt: {fileID: 297722444}
   m_Follow: {fileID: 0}
   m_Lens:
@@ -56266,8 +56316,11 @@ MonoBehaviour:
     m_SensorSize: {x: 1, y: 1}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     m_OrthoFromCamera: 0
     m_PhysicalFromCamera: 0
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -56280,12 +56333,17 @@ MonoBehaviour:
         m_Calls: []
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       m_CallsDirty: 1
   m_LegacyBlendHint: 0
   m_ComponentPipeline: []
   m_ComponentOwner: {fileID: 987918183}
   mCachedLookAtTarget: {fileID: 0}
   mCachedLookAtTargetVcam: {fileID: 0}
+=======
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 987918183}
+>>>>>>> Stashed changes
 =======
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 987918183}
