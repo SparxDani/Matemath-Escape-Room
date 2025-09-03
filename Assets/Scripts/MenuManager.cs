@@ -1,312 +1,248 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
 
+using UnityEngine.UI;
+using TMPro;
 public class MenuManager : MonoBehaviour
 {
-    public Button highScoresPanelButton, startGameButton, closeHSPanel;
-    public GameObject gameMenuPanel, highScoresPanel, chooseDificultPanel, howToPlayPanel;
-    public GameObject firstPlacePrefab, otherPlacesPrefab; //Prefabs de posiciones
-    public Transform highScoreContent;
+    public GameObject panelInicial;
+    public GameObject panelLoading;
+    public GameObject panelUsername;
+    public GameObject panelMenu;
 
-    private static string playerName;
-    private static int playerId;
-    private string currentDificultad = "Facil";
+    public TMP_InputField inputUsername;
+    public Button readyButton;
 
-    public TextMeshProUGUI playerNameDisplay, dificultadActual, messageDisplay;
-
-    public AudioManager audioManager;
-
-    public List<Sprite> fondos;
-    public SpriteRenderer fondoMenu;
-
-    public GameObject nextButton, returnButton;
-    public List<Sprite> indicaciones;
-    public Image indicacion;
-
-    private static int id_juegos;
     public string idUser;
 
-    private bool isUpdatingHighScores = false; // Variable de control
-    public Button closeButton,facilButton,normalButton,dificilButton;
     public static string user_login;
+    private static string playerName;
+    private static int playerId;
+
+    private bool modoInicial = true;
+    private bool modoConcurso = false;
+
+    public Button ConcursoButton;
+    public Button TutorialButton;
+    public Button JugarButton;
+    public Button ConfiguracionButton;
+    public TextMeshProUGUI playerNameText;
+
+    // Panel dificultad y controles
+    public GameObject escogerDificultadJuegoPanel;
+    public Toggle toggleFacil, toggleNormal, toggleDificil;
+    public Button botonJugarPartida, backButton;
+    public TextMeshProUGUI textoJugarPartida;
 
     void Start()
     {
-        Time.timeScale = 1f;
-        audioManager.ApplyAudioSettings();
-        gameMenuPanel.SetActive(false);
-        highScoresPanel.SetActive(false);
-        chooseDificultPanel.SetActive(false);
-        howToPlayPanel.SetActive(false);
-        id_juegos = 3;
-        messageDisplay.text = "";
-        // Obtener id_user del URL
-        GetIdUserFromUrl();
-        
-    
-        
+        panelInicial.SetActive(true);
+        panelLoading.SetActive(false);
+        panelUsername.SetActive(false);
+        panelMenu.SetActive(false);
+        escogerDificultadJuegoPanel.SetActive(false);
+        modoInicial = true;
+        modoConcurso = false;
 
+        inputUsername.text = "";
+        readyButton.interactable = false;
+        inputUsername.onValueChanged.AddListener(OnInputUsernameChanged);
+        readyButton.onClick.AddListener(OnReadyButtonPressed);
+
+        // Inicializar toggles y botones de dificultad
+        toggleFacil.isOn = false;
+        toggleNormal.isOn = false;
+        toggleDificil.isOn = false;
+        botonJugarPartida.interactable = false;
+        textoJugarPartida.gameObject.SetActive(false);
+        SetBotonJugarPartidaAltura(183);
+
+        toggleFacil.onValueChanged.AddListener((v) => OnToggleChanged(toggleFacil, v));
+        toggleNormal.onValueChanged.AddListener((v) => OnToggleChanged(toggleNormal, v));
+        toggleDificil.onValueChanged.AddListener((v) => OnToggleChanged(toggleDificil, v));
+        botonJugarPartida.onClick.AddListener(OnBotonJugarPartida);
+        backButton.onClick.AddListener(OnBackButton);
+        JugarButton.onClick.AddListener(OnJugarButton);
+    }
+    void OnJugarButton()
+    {
+        panelMenu.SetActive(false);
+        escogerDificultadJuegoPanel.SetActive(true);
+        // Resetear estado
+        toggleFacil.isOn = false;
+        toggleNormal.isOn = false;
+        toggleDificil.isOn = false;
+        botonJugarPartida.interactable = false;
+        textoJugarPartida.gameObject.SetActive(false);
+        SetBotonJugarPartidaAltura(183);
     }
 
-    void Awake()
+    void OnToggleChanged(Toggle changedToggle, bool isOn)
     {
-        Application.targetFrameRate = 60;
+        if (isOn)
+        {
+            // Desactivar los otros toggles
+            if (changedToggle == toggleFacil)
+            {
+                toggleNormal.isOn = false;
+                toggleDificil.isOn = false;
+            }
+            else if (changedToggle == toggleNormal)
+            {
+                toggleFacil.isOn = false;
+                toggleDificil.isOn = false;
+            }
+            else if (changedToggle == toggleDificil)
+            {
+                toggleFacil.isOn = false;
+                toggleNormal.isOn = false;
+            }
+        }
+        // Activar botón si algún toggle está en true
+        bool algunoActivo = toggleFacil.isOn || toggleNormal.isOn || toggleDificil.isOn;
+        botonJugarPartida.interactable = algunoActivo;
+        textoJugarPartida.gameObject.SetActive(algunoActivo);
+        SetBotonJugarPartidaAltura(algunoActivo ? 220 : 183);
+    }
 
+    void OnBotonJugarPartida()
+    {
+        // Aquí puedes poner la lógica para iniciar la partida según la dificultad seleccionada
+        // Ejemplo: string dificultad = toggleFacil.isOn ? "Facil" : toggleNormal.isOn ? "Normal" : "Dificil";
+    }
+
+    void OnBackButton()
+    {
+        escogerDificultadJuegoPanel.SetActive(false);
+        panelMenu.SetActive(true);
+        toggleFacil.isOn = false;
+        toggleNormal.isOn = false;
+        toggleDificil.isOn = false;
+        botonJugarPartida.interactable = false;
+        textoJugarPartida.gameObject.SetActive(false);
+        SetBotonJugarPartidaAltura(183);
+    }
+
+    void SetBotonJugarPartidaAltura(float altura)
+    {
+        var rect = botonJugarPartida.GetComponent<RectTransform>();
+        if (rect != null)
+        {
+            var size = rect.sizeDelta;
+            size.y = altura;
+            rect.sizeDelta = size;
+        }
     }
 
     void Update()
     {
-        if (Application.targetFrameRate != 60)
+        if (modoInicial && Input.anyKeyDown)
         {
-            Application.targetFrameRate = 60;
-        }
-        switch(currentDificultad)
-        {
-            case "Facil":
-                facilButton.interactable = false;
-                normalButton.interactable = true;
-                dificilButton.interactable = true;
-                break;
-            case "Normal":
-                facilButton.interactable = true;
-                normalButton.interactable = false;
-                dificilButton.interactable = true;
-                break;
-            case "Dificil":
-                facilButton.interactable = true;
-                normalButton.interactable = true;
-                dificilButton.interactable = false;
-                break;
+            modoInicial = false;
+            panelInicial.SetActive(false);
+
+            panelLoading.SetActive(true);
+            StartCoroutine(FlujoObtenerUsuario());
         }
     }
 
-    public void GetIdUserFromUrl()
+    void OnInputUsernameChanged(string value)
     {
+        readyButton.interactable = !string.IsNullOrEmpty(value);
+    }
+
+    void OnReadyButtonPressed()
+    {
+        playerName = inputUsername.text;
+        panelUsername.SetActive(false);
+        StartCoroutine(AnimacionPanelLoading());
+    }
+
+    IEnumerator AnimacionPanelLoading()
+    {
+
+        panelLoading.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        panelLoading.SetActive(false);
+        MostrarPanelMenu();
+    }
+
+    void MostrarPanelMenu()
+    {
+        panelMenu.SetActive(true);
+        // Activar todos los botones
+        TutorialButton.gameObject.SetActive(true);
+        JugarButton.gameObject.SetActive(true);
+        ConfiguracionButton.gameObject.SetActive(true);
+        // Mostrar el nombre del jugador
+        if (playerNameText != null)
+            playerNameText.text = playerName;
+        // Activar o desactivar el botón de concurso según el modo
+        if (ConcursoButton != null)
+            ConcursoButton.gameObject.SetActive(modoConcurso);
+    }
+
+    IEnumerator FlujoObtenerUsuario()
+    {
+        yield return GetIdUserFromUrlCoroutine();
+    }
+
+    IEnumerator GetIdUserFromUrlCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
         string url = Application.absoluteURL;
+        bool tieneId = false;
         if (string.IsNullOrEmpty(url))
         {
             idUser = null;
-            messageDisplay.text = "Error: No se pudo obtener el ID de usuario.";
         }
         else
         {
             var uri = new System.Uri(url);
             var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
             idUser = query.Get("id_user");
-            if (idUser == null)
+            if (idUser != null)
             {
-                messageDisplay.text = "Error: No se pudo obtener el ID de usuario.";
-            }
-            else
-            {
-                messageDisplay.text = "Cargando...";
-                ObtenerNickname();
+                tieneId = true;
             }
         }
 
-
-
+        if (tieneId)
+        {
+            yield return ObtenerNicknameCoroutine();
+            modoConcurso = true;
+            yield return new WaitForSeconds(2f);
+            panelLoading.SetActive(false);
+            MostrarPanelMenu();
+        }
+        else
+        {
+            modoConcurso = false;
+            yield return new WaitForSeconds(2f);
+            panelLoading.SetActive(false);
+            panelUsername.SetActive(true);
+        }
     }
 
-    public async void ObtenerNickname()
+    IEnumerator ObtenerNicknameCoroutine()
     {
-        messageDisplay.text = "Cargando...";
-        await InitializeUser(idUser);
+        var task = InitializeUser(idUser);
+        while (!task.IsCompleted)
+        {
+            yield return null;
+        }
     }
 
     public async Task InitializeUser(string idUser)
     {
-        messageDisplay.text = "Cargando...";
         var user = await HighScoreManager.GetUserById(idUser);
-
         if (user != null)
         {
             playerName = user.user_nickname;
             user_login = user.user_login;
             playerId = int.Parse(idUser);
-            messageDisplay.text = "";
-            ShowGameMenu();
         }
-        else
-        {
-            if (messageDisplay.text == "Cargando...")
-            {
-                messageDisplay.text = "Error: No se pudo obtener el nombre de usuario.";
-            }
-            else
-            {
-                messageDisplay.text = messageDisplay.text;
-            }
-        }
-    }
-
-    void ShowGameMenu()
-    {
-        Debug.Log("Showing game menu.");
-        fondoMenu.sprite = fondos[1];
-        gameMenuPanel.SetActive(true);
-        playerNameDisplay.text = playerName;
-    }
-
-    public void StartGame()
-    {
-        gameMenuPanel.SetActive(false);
-        chooseDificultPanel.SetActive(true);
-        fondoMenu.sprite = fondos[3];
-    }
-
-    public void ShowHighScores()
-    {
-        fondoMenu.sprite = fondos[2];
-        gameMenuPanel.SetActive(false);
-        highScoresPanel.SetActive(true);
-        currentDificultad = "Facil";
-        dificultadActual.text = "Viendo Dificultad: " + currentDificultad;
-        ActualizarDificultad(currentDificultad);
-    }
-
-    public async void ActualizarDificultad(string dificultad)
-    {
-        if (isUpdatingHighScores) return; // Si ya se está actualizando, no hacer nada
-
-        isUpdatingHighScores = true; // Marcar que se está actualizando
-        closeButton.interactable = false;
-        facilButton.interactable = false;
-        normalButton.interactable = false;
-        dificilButton.interactable = false;
-        await UpdateHighScores(dificultad);
-        isUpdatingHighScores = false; // Marcar que la actualización ha terminado
-        closeButton.interactable = true;
-        facilButton.interactable = true;
-        normalButton.interactable = true;
-        dificilButton.interactable = true;
-    }
-
-    public async Task UpdateHighScores(string dificultad)
-    {
-        currentDificultad = dificultad;
-        dificultadActual.text = "Viendo Dificultad: " + currentDificultad;
-
-        foreach (Transform child in highScoreContent)
-        {
-            Destroy(child.gameObject);
-        }
-
-        List<HighScoreEntry> highScores = await HighScoreManager.GetHighScores(id_juegos, dificultad);
-
-        if (highScores == null || highScores.Count == 0)
-        {
-            Debug.Log("No high scores found.");
-            return;
-        }
-
-        Debug.Log("High Scores:");
-        foreach (var highScore in highScores)
-        {
-            Debug.Log($"Position: {highScore.puesto}, User: {highScore.nickname_user}, Score: {highScore.puntaje}");
-        }
-
-        int position = 1;
-
-        foreach (HighScoreEntry highScore in highScores)
-        {
-            GameObject newEntry;
-            if (position == 1)
-            {
-                newEntry = Instantiate(firstPlacePrefab, highScoreContent);
-            }
-            else
-            {
-                newEntry = Instantiate(otherPlacesPrefab, highScoreContent);
-            }
-
-            TextMeshProUGUI[] textFields = newEntry.GetComponentsInChildren<TextMeshProUGUI>();
-            textFields[0].text = position.ToString();
-            textFields[1].text = highScore.nickname_user;
-            textFields[2].text = highScore.puntaje.ToString();
-
-            position++;
-        }
-    }
-
-    public void CloseHighScores()
-    {
-        fondoMenu.sprite = fondos[1];
-        highScoresPanel.SetActive(false);
-        gameMenuPanel.SetActive(true);
-    }
-
-    public void SetDificultadFacil()
-    {
-        PlayerPrefs.SetString("Dificultad", "Facil");
-        
-        /*GameManager.playerName = playerName;
-        GameManager.id_juegos = id_juegos;
-        GameManager.id_user = playerId;*/
-        SceneManager.LoadScene(1);
-    }
-
-    public void SetDificultadNormal()
-    {
-        PlayerPrefs.SetString("Dificultad", "Normal");
-        
-        /*GameManager.playerName = playerName;
-        GameManager.id_juegos = id_juegos;
-        GameManager.id_user = playerId;*/
-        SceneManager.LoadScene(1);
-    }
-
-    public void SetDificultadDificil()
-    {
-        PlayerPrefs.SetString("Dificultad", "Dificil");
-
-        /*GameManager.playerName = playerName;
-        GameManager.id_juegos = id_juegos;
-        GameManager.id_user = playerId;*/
-        SceneManager.LoadScene(1);
-    }
-
-    public void OnMusicButtonPressed()
-    {
-        audioManager.ToggleMusic();
-    }
-
-    public void OnSFXButtonPressed()
-    {
-        audioManager.ToggleSFX();
-    }
-
-    public void HowToPlay()
-    {
-        indicacion.sprite = indicaciones[0];
-        nextButton.SetActive(true);
-        returnButton.SetActive(false);
-        gameMenuPanel.SetActive(false);
-        howToPlayPanel.SetActive(true);
-    }
-
-    public void NextImage()
-    {
-        nextButton.SetActive(false);
-        returnButton.SetActive(true);
-        indicacion.sprite = indicaciones[1];
-    }
-
-    public void returnMenuPanel()
-    {
-        howToPlayPanel.SetActive(false);
-        gameMenuPanel.SetActive(true);
-    }
-
-    public void CloseDificults()
-    {
-        fondoMenu.sprite = fondos[1];
-        chooseDificultPanel.SetActive(false);
-        gameMenuPanel.SetActive(true);
     }
 }

@@ -1,58 +1,53 @@
-Shader "UI/UnlitPatternURP"
+Shader "UI/UnlitPatternWebGL"
 {
     Properties
     {
         _MainTex ("Pattern Sprite", 2D) = "white" {}
         _Color ("Color", Color) = (1,1,1,1)
-    _PatternDirection ("Pattern Direction", Vector) = (1,0,0,0)
-    _PatternSpeed ("Pattern Speed", Float) = 0.2
-    _PatternRotation ("Pattern Rotation (Degrees)", Float) = 0.0
+        _PatternDirection ("Pattern Direction", Vector) = (1,0,0,0)
+        _PatternSpeed ("Pattern Speed", Float) = 0.2
+        _PatternRotation ("Pattern Rotation (Degrees)", Float) = 0.0
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" "Queue"="Transparent" "RenderPipeline"="UniversalRenderPipeline" }
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
         LOD 100
         Pass
         {
-            Name "Unlit"
             Blend SrcAlpha OneMinusSrcAlpha
             Cull Off
             ZWrite Off
 
-            HLSLPROGRAM
+            CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "UnityCG.cginc"
 
-            struct Attributes
+            struct appdata_t
             {
-                float4 positionOS : POSITION;
+                float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
             };
 
-            struct Varyings
+            struct v2f
             {
-                float4 positionHCS : SV_POSITION;
                 float2 uv : TEXCOORD0;
+                float4 vertex : SV_POSITION;
             };
 
-            CBUFFER_START(UnityPerMaterial)
-                float4 _MainTex_ST;
-                float4 _Color;
-                float4 _PatternDirection;
-                float _PatternSpeed;
-                float _PatternRotation;
-            CBUFFER_END
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
+            float4 _Color;
+            float4 _PatternDirection;
+            float _PatternSpeed;
+            float _PatternRotation;
 
-            TEXTURE2D(_MainTex);
-            SAMPLER(sampler_MainTex);
-
-            Varyings vert (Attributes IN)
+            v2f vert (appdata_t v)
             {
-                Varyings OUT;
-                OUT.positionHCS = TransformObjectToHClip(IN.positionOS);
-                OUT.uv = TRANSFORM_TEX(IN.uv, _MainTex);
-                return OUT;
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                return o;
             }
 
             float2 AnimateUV(float2 uv)
@@ -60,7 +55,7 @@ Shader "UI/UnlitPatternURP"
                 float2 offset = _PatternDirection.xy * _PatternSpeed * _Time.y;
                 float2 movedUV = uv + offset;
                 // Rotación en torno al centro (0.5, 0.5)
-                float rad = radians(_PatternRotation);
+                float rad = _PatternRotation * UNITY_PI / 180.0;
                 float2 center = float2(0.5, 0.5);
                 float2 rel = movedUV - center;
                 float cosR = cos(rad);
@@ -72,16 +67,15 @@ Shader "UI/UnlitPatternURP"
                 return frac(rotUV);
             }
 
-            half4 frag (Varyings IN) : SV_Target
+            fixed4 frag (v2f i) : SV_Target
             {
-                float2 uv = AnimateUV(IN.uv);
-                half4 texCol = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
-                half4 col = texCol * _Color;
-                // Mantener la transparencia del sprite y el color
+                float2 uv = AnimateUV(i.uv);
+                fixed4 texCol = tex2D(_MainTex, uv);
+                fixed4 col = texCol * _Color;
                 col.a *= texCol.a;
                 return col;
             }
-            ENDHLSL
+            ENDCG
         }
     }
     FallBack "Unlit"
