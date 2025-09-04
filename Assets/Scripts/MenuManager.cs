@@ -28,7 +28,10 @@ public class MenuManager : MonoBehaviour
     public Button TutorialButton;
     public Button JugarButton;
     public Button ConfiguracionButton;
+    public Button salirDeConfigButton;
+    public GameObject configPanel;
     public TextMeshProUGUI playerNameText;
+    public AudioManager audioManager;
 
     // Panel dificultad y controles
     public GameObject escogerDificultadJuegoPanel;
@@ -43,6 +46,7 @@ public class MenuManager : MonoBehaviour
         panelUsername.SetActive(false);
         panelMenu.SetActive(false);
         escogerDificultadJuegoPanel.SetActive(false);
+        configPanel.SetActive(false);
         modoInicial = true;
         modoConcurso = false;
 
@@ -65,6 +69,37 @@ public class MenuManager : MonoBehaviour
         botonJugarPartida.onClick.AddListener(OnBotonJugarPartida);
         backButton.onClick.AddListener(OnBackButton);
         JugarButton.onClick.AddListener(OnJugarButton);
+        ConfiguracionButton.onClick.AddListener(OnConfiguracionButton);
+        salirDeConfigButton.onClick.AddListener(OnSalirDeConfigButton);
+        TutorialButton.onClick.AddListener(OnTutorialButton);
+    }
+    void OnTutorialButton()
+    {
+        // Buscar el LoadingScreenManager en la escena
+        LoadingScreenManager loadingManager = FindObjectOfType<LoadingScreenManager>();
+        if (loadingManager != null)
+        {
+            loadingManager.LoadSceneAsyncWithLoadingPanelWithIndex(1); // Cambia "1" por el índice de tu escena tutorial
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró LoadingScreenManager en la escena.");
+        }
+    }
+    void OnConfiguracionButton()
+    {
+        panelMenu.SetActive(false);
+        configPanel.SetActive(true);
+        if (audioManager != null)
+        {
+            audioManager.LoadAudioSettings();
+        }
+    }
+
+    void OnSalirDeConfigButton()
+    {
+        configPanel.SetActive(false);
+        panelMenu.SetActive(true);
     }
     void OnJugarButton()
     {
